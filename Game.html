@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+table, td {
+  border: 1px solid black;
+  cursor: pointer;
+  text-align: center;
+  min-width: 50px;
+  height: 50px;
+}
+</style>
+<h2>Madhu Super Challenge Game!</h2>
+
+<br> 
+<div id="container"></div>
+
+<br> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+var values = [],a,perrow = 5,nextNumber = 20,maxNumber = 0;
+var table = document.createElement("table"),
+row = table.insertRow();
+var item =1;
+
+for(i=1;i<=20;i++)
+{
+a = Math.floor(Math.random() * 20) + 1;
+while(values.includes(a))
+{
+a = Math.floor(Math.random() * 20) + 1;
+}
+
+
+    
+var cell = row.insertCell();
+    cell.innerHTML = a;
+if (i%perrow==0) {
+      row = table.insertRow();
+    }
+values.push(a);
+
+}
+document.getElementById("container").appendChild(table);
+
+ $('td').click(function(e) {
+ debugger;
+    var txt = $(e.target).text();
+    if (item == txt || maxNumber == 40){
+    if (maxNumber < 40)
+    {
+    nextNumber++;
+    $(e.target).text(nextNumber);
+    maxNumber = nextNumber;
+    item++;
+    } else{
+
+    $(e.target).text('');
+    item--;
+    }
+    
+    }
+    
+ });
+</script>
+
+</body>
+</html>
